@@ -86,7 +86,7 @@ class BluetoothSerial : CordovaPlugin() {
     @Throws(JSONException::class)
     private fun connect(args: CordovaArgs, callbackContext: CallbackContext) {
         val macAddress: String = args.getString(0)
-        val device = bluetoothAdapter!!.getRemoteDevice(macAddress)
+        val device = bluetoothAdapter?.getRemoteDevice(macAddress)
         if (device != null) {
             BluetoothSerialService.connect(device)
             val result = PluginResult(PluginResult.Status.NO_RESULT)
@@ -121,11 +121,10 @@ class BluetoothSerial : CordovaPlugin() {
     }
 
     companion object {
-        // actions
-        private const val CONNECT = "connectInsecure"
-        private const val LISTEN = "subscribeRaw"
+        private const val CONNECT = "connect"
+        private const val LISTEN = "listen"
         private const val DISCONNECT = "disconnect"
-        private const val SEND = "write"
+        private const val SEND = "send"
         private const val GET_ADDRESS = "getAddress"
         private const val REGISTER_DATA_CALLBACK = "registerDataCallback"
         private const val REGISTER_CONNECT_CALLBACK = "registerConnectCallback"
@@ -133,5 +132,15 @@ class BluetoothSerial : CordovaPlugin() {
 
         // Debugging
         private const val TAG = "BluetoothSerial"
+        // Message types sent from the BluetoothSerialService Handler
+        const val MESSAGE_STATE_CHANGE = 1
+        const val MESSAGE_WRITE = 3
+        const val MESSAGE_DEVICE_NAME = 4
+        const val MESSAGE_TOAST = 5
+        const val MESSAGE_READ_RAW = 6
+        // Key names received from the BluetoothChatService Handler
+        const val DEVICE_NAME = "device_name"
+        const val TOAST = "toast"
+        private const val CHECK_PERMISSIONS_REQ_CODE = 2
     }
 }

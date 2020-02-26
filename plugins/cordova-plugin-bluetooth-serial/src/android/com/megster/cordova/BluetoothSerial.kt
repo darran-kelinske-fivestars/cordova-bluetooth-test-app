@@ -22,7 +22,6 @@ class BluetoothSerial : CordovaPlugin() {
     private var closeCallback: CallbackContext? = null
     private var dataAvailableCallback: CallbackContext? = null
     private var bluetoothAdapter: BluetoothAdapter? = null
-    private val bluetoothSerialService: BluetoothSerialService = BluetoothSerialService()
 
     @Throws(JSONException::class)
     override fun execute(action: String, args: CordovaArgs, callbackContext: CallbackContext): Boolean {
@@ -36,16 +35,16 @@ class BluetoothSerial : CordovaPlugin() {
                 connect(args, callbackContext)
             }
             DISCONNECT -> {
-                bluetoothSerialService.stop()
+                BluetoothSerialService.stop()
                 callbackContext.success()
             }
             SEND -> {
                 val data: ByteArray = args.getArrayBuffer(0)
-                bluetoothSerialService.write(data)
+                BluetoothSerialService.write(data)
                 callbackContext.success()
             }
             LISTEN -> {
-                bluetoothSerialService.start()
+                BluetoothSerialService.start()
                 val result = PluginResult(PluginResult.Status.NO_RESULT)
                 callbackContext.sendPluginResult(result)
             }
@@ -81,15 +80,15 @@ class BluetoothSerial : CordovaPlugin() {
 
     override fun onDestroy() {
         super.onDestroy()
-        bluetoothSerialService.stop()
+        BluetoothSerialService.stop()
     }
 
     @Throws(JSONException::class)
     private fun connect(args: CordovaArgs, callbackContext: CallbackContext) {
         val macAddress: String = args.getString(0)
-        val device = bluetoothAdapter!!.getRemoteDevice(macAddress)
+        val device = bluetoothAdapter?.getRemoteDevice(macAddress)
         if (device != null) {
-            bluetoothSerialService.connect(device)
+            BluetoothSerialService.connect(device)
             val result = PluginResult(PluginResult.Status.NO_RESULT)
             callbackContext.sendPluginResult(result)
         } else {
@@ -122,11 +121,10 @@ class BluetoothSerial : CordovaPlugin() {
     }
 
     companion object {
-        // actions
-        private const val CONNECT = "connectInsecure"
-        private const val LISTEN = "subscribeRaw"
+        private const val CONNECT = "connect"
+        private const val LISTEN = "listen"
         private const val DISCONNECT = "disconnect"
-        private const val SEND = "write"
+        private const val SEND = "send"
         private const val GET_ADDRESS = "getAddress"
         private const val REGISTER_DATA_CALLBACK = "registerDataCallback"
         private const val REGISTER_CONNECT_CALLBACK = "registerConnectCallback"

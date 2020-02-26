@@ -27,6 +27,9 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        connectButton.addEventListener('touchend', this.connect, false);
+        listenButton.addEventListener('touchend', this.listen, false);
+        sendButton.addEventListener('touchend', this.send, false);
     },
     // deviceready Event Handler
     //
@@ -35,6 +38,38 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
+    connect: function() {
+            bluetoothSerial.connect(
+                "18:21:95:5A:A3:80",  // device to connect to
+                function () {
+                console.log("Success")
+                },    // start listening if you succeed
+                function () {
+                                            console.log("Not success")
+                                            }    // show the error if you fail
+            );
+    },
+    listen: function() {
+            bluetoothSerial.listen(
+                function () {
+                console.log("Success")
+                },    // start listening if you succeed
+                function () {
+                                            console.log("Not success")
+                                            }    // show the error if you fail
+            );
+    },
+    send: function() {
+            bluetoothSerial.send("moops",
+                function () {
+                console.log("Success")
+                },    // start listening if you succeed
+                function () {
+                                            console.log("Not success")
+                                            }    // show the error if you fail
+            );
+    },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);

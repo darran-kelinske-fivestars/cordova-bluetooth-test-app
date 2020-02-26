@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5a4245df-bd7f-4777-a341-f54fcc4536e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/cordova-bluetooth-test-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platforms/android/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/taskArtifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/taskArtifacts.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/taskArtifacts/taskArtifacts.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_CordovaLib_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_CordovaLib_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_CordovaLib_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_CordovaLib_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.gradle/3.3/tasks/_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/CordovaLib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/CordovaLib/CordovaLib.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/CordovaLib/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/CordovaLib/build/outputs/aar/CordovaLib-debug.aar" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/CordovaLib/build/outputs/aar/CordovaLib-debug.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/assets/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/assets/www/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/assets/www/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/platform_www/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/platform_www/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/src/com/megster/cordova/BluetoothSerial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/src/com/megster/cordova/BluetoothSerial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/src/com/megster/cordova/BluetoothSerialService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/src/com/megster/cordova/BluetoothSerialService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/cordova-plugin-bluetooth-serial/src/android/com/megster/cordova/BluetoothSerial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/cordova-plugin-bluetooth-serial/src/android/com/megster/cordova/BluetoothSerial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/cordova-plugin-bluetooth-serial/src/android/com/megster/cordova/BluetoothSerialService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/cordova-plugin-bluetooth-serial/src/android/com/megster/cordova/BluetoothSerialService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/js/index.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YLdjQLyyLgUQ7wpq2xMXnqQZz1" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a4245df-bd7f-4777-a341-f54fcc4536e4" name="Default Changelist" comment="" />
+      <created>1582725942966</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582725942966</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

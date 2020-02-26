@@ -1,9 +1,8 @@
 /*global cordova*/
 module.exports = {
 
-    // Android only - see http://goo.gl/1mFjZY
-    connectInsecure: function (macAddress, success, failure) {
-        cordova.exec(success, failure, "BluetoothSerial", "connectInsecure", [macAddress]);
+    connect: function (macAddress, success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "connect", [macAddress]);
     },
 
     disconnect: function (success, failure) {
@@ -12,7 +11,7 @@ module.exports = {
 
     // writes data to the bluetooth serial port
     // data can be an ArrayBuffer, string, integer array, or Uint8Array
-    write: function (data, success, failure) {
+    send: function (data, success, failure) {
 
         // convert to ArrayBuffer
         if (typeof data === 'string') {
@@ -24,27 +23,12 @@ module.exports = {
             data = data.buffer;
         }
 
-        cordova.exec(success, failure, "BluetoothSerial", "write", [data]);
+        cordova.exec(success, failure, "BluetoothSerial", "send", [data]);
     },
 
     // calls the success callback when new data is available with an ArrayBuffer
-    subscribeRawData: function (success, failure) {
-
-        successWrapper = function(data) {
-            // Windows Phone flattens an array of one into a number which
-            // breaks the API. Stuff it back into an ArrayBuffer.
-            if (typeof data === 'number') {
-                var a = new Uint8Array(1);
-                a[0] = data;
-                data = a.buffer;
-            }
-            success(data);
-        };
-        cordova.exec(successWrapper, failure, "BluetoothSerial", "subscribeRaw", []);
-    },
-
-    discoverUnpaired: function (success, failure) {
-        cordova.exec(success, failure, "BluetoothSerial", "discoverUnpaired", []);
+    listen: function (success, failure) {
+        cordova.exec(success, failure, "BluetoothSerial", "listen", []);
     },
 
     getAddress: function (success, failure) {

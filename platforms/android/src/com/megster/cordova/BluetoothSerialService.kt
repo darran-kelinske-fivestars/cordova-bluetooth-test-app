@@ -4,11 +4,15 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothServerSocket
 import android.bluetooth.BluetoothSocket
+import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import org.apache.cordova.BuildConfig
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 object BluetoothSerialService {
@@ -332,6 +336,7 @@ object BluetoothSerialService {
 // when / if we read less than its size.
                     if (bytes > 0) {
                         val rawdata = Arrays.copyOf(buffer, bytes)
+                        Log.e(TAG, "The raw data is: $data");
                     }
                 } catch (e: IOException) {
                     Log.e(TAG, "disconnected", e)
@@ -350,7 +355,6 @@ object BluetoothSerialService {
         fun write(buffer: ByteArray?) {
             try {
                 mmOutStream!!.write(buffer)
-                // Share the sent message back to the UI Activity
             } catch (e: IOException) {
                 Log.e(TAG, "Exception during write", e)
             }
