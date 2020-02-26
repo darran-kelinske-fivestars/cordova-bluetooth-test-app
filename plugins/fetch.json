@@ -6,5 +6,15 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-bluetooth-serial": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fivestars/cordova-plugin-bluetooth-serial.git",
+            "subdir": ".",
+            "ref": "migrate_to_new_interface"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
