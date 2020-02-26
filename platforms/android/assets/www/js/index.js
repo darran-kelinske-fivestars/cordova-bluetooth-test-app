@@ -52,31 +52,31 @@ var app = {
                 app.display("Connection in progress");
             }, // start listening if you succeed
             function() {
-                console.log("Not success")
+                console.log("Not success");
             } // show the error if you fail
         );
     },
     listen: function() {
         bluetoothSerial.listen(
             function() {
-                console.log("Success")
+                console.log("Success");
                 app.clear();
-                app.display("Listening")
+                app.display("Listening");
             }, // start listening if you succeed
             function() {
-                console.log("Not success")
+                console.log("Not success");
             } // show the error if you fail
         );
     },
     send: function() {
         bluetoothSerial.send("moops",
             function() {
-                console.log("Success")
+                console.log("Success");
                 this.clear();
-                this.display("sent message")
+                this.display("sent message");
             }, // start listening if you succeed
             function() {
-                console.log("Not success")
+                console.log("Not success");
             } // show the error if you fail
         );
     },
