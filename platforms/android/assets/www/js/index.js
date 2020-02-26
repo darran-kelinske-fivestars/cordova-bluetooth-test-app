@@ -39,35 +39,46 @@ var app = {
         app.receivedEvent('deviceready');
     },
     connect: function() {
-            bluetoothSerial.connect(
-                "18:21:95:5A:A3:80",  // device to connect to
-                function () {
-                console.log("Success")
-                },    // start listening if you succeed
-                function () {
-                                            console.log("Not success")
-                                            }    // show the error if you fail
-            );
+        bluetoothSerial.registerOnConnectedCallback(function() {
+            console.log("Connected");
+            app.clear();
+            app.display("Connected to device");
+        });
+        bluetoothSerial.connect(
+            "18:21:95:5A:A3:80", // device to connect to
+            function() {
+                console.log("Success");
+                app.clear();
+                app.display("Connection in progress");
+            }, // start listening if you succeed
+            function() {
+                console.log("Not success")
+            } // show the error if you fail
+        );
     },
     listen: function() {
-            bluetoothSerial.listen(
-                function () {
+        bluetoothSerial.listen(
+            function() {
                 console.log("Success")
-                },    // start listening if you succeed
-                function () {
-                                            console.log("Not success")
-                                            }    // show the error if you fail
-            );
+                app.clear();
+                app.display("Listening")
+            }, // start listening if you succeed
+            function() {
+                console.log("Not success")
+            } // show the error if you fail
+        );
     },
     send: function() {
-            bluetoothSerial.send("moops",
-                function () {
+        bluetoothSerial.send("moops",
+            function() {
                 console.log("Success")
-                },    // start listening if you succeed
-                function () {
-                                            console.log("Not success")
-                                            }    // show the error if you fail
-            );
+                this.clear();
+                this.display("sent message")
+            }, // start listening if you succeed
+            function() {
+                console.log("Not success")
+            } // show the error if you fail
+        );
     },
 
     // Update DOM on a Received Event
@@ -80,6 +91,22 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    display: function(message) {
+        var display = document.getElementById("message"), // the message div
+            lineBreak = document.createElement("br"), // a line break
+            label = document.createTextNode(message); // create the label
+
+        display.appendChild(lineBreak); // add a line break
+        display.appendChild(label); // add the message node
+    },
+    /*
+        clears the message div:
+    */
+    clear: function() {
+        var display = document.getElementById("message");
+        display.innerHTML = "";
     }
 };
 

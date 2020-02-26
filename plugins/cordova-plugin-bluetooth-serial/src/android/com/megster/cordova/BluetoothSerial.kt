@@ -1,18 +1,11 @@
 package com.megster.cordova
 
-import android.app.Activity
 import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.content.pm.PackageManager
-import android.util.Log
+import com.megster.cordova.BluetoothSerialService.ClosedCallback
+import com.megster.cordova.BluetoothSerialService.ConnectedCallback
 import org.apache.cordova.*
-import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
+import java.lang.Exception
 
 /**
  * PhoneGap Plugin for Serial Communication over Bluetooth
@@ -44,9 +37,12 @@ class BluetoothSerial : CordovaPlugin() {
                 callbackContext.success()
             }
             LISTEN -> {
-                BluetoothSerialService.start()
-                val result = PluginResult(PluginResult.Status.NO_RESULT)
-                callbackContext.sendPluginResult(result)
+                try {
+                    BluetoothSerialService.start()
+                    callbackContext.success()
+                } catch (e: Exception) {
+                    callbackContext.error(e.toString())
+                }
             }
             GET_ADDRESS -> {
                 bluetoothAdapter?.run {
@@ -61,12 +57,22 @@ class BluetoothSerial : CordovaPlugin() {
             }
             REGISTER_CONNECT_CALLBACK -> {
                 connectCallback = callbackContext
+                BluetoothSerialService.registerConnectedCallback(object : ConnectedCallback {
+                    override fun connected() {
+                        notifyConnectionSuccess()
+                    }
+                })
                 val result = PluginResult(PluginResult.Status.NO_RESULT)
                 result.keepCallback = true
                 callbackContext.sendPluginResult(result)
             }
             REGISTER_CLOSE_CALLBACK -> {
                 closeCallback = callbackContext
+                BluetoothSerialService.registerClosedCallback(object : ClosedCallback {
+                    override fun closed() {
+                        notifyConnectionLost()
+                    }
+                })
                 val result = PluginResult(PluginResult.Status.NO_RESULT)
                 result.keepCallback = true
                 callbackContext.sendPluginResult(result)
@@ -96,8 +102,8 @@ class BluetoothSerial : CordovaPlugin() {
         }
     }
 
-    private fun notifyConnectionLost(error: String?) {
-        closeCallback?.error(error)
+    private fun notifyConnectionLost() {
+        closeCallback?.success()
     }
 
     private fun notifyConnectionSuccess() {
@@ -114,12 +120,6 @@ class BluetoothSerial : CordovaPlugin() {
         }
     }
 
-    @Throws(JSONException::class)
-    override fun onRequestPermissionResult(requestCode: Int, permissions: Array<String?>?,
-                                           grantResults: IntArray) {
-
-    }
-
     companion object {
         private const val CONNECT = "connect"
         private const val LISTEN = "listen"
@@ -132,15 +132,5 @@ class BluetoothSerial : CordovaPlugin() {
 
         // Debugging
         private const val TAG = "BluetoothSerial"
-        // Message types sent from the BluetoothSerialService Handler
-        const val MESSAGE_STATE_CHANGE = 1
-        const val MESSAGE_WRITE = 3
-        const val MESSAGE_DEVICE_NAME = 4
-        const val MESSAGE_TOAST = 5
-        const val MESSAGE_READ_RAW = 6
-        // Key names received from the BluetoothChatService Handler
-        const val DEVICE_NAME = "device_name"
-        const val TOAST = "toast"
-        private const val CHECK_PERMISSIONS_REQ_CODE = 2
     }
 }
