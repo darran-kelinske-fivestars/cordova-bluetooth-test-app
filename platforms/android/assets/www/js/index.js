@@ -30,6 +30,7 @@ var app = {
         connectButton.addEventListener('touchend', this.connect, false);
         listenButton.addEventListener('touchend', this.listen, false);
         sendButton.addEventListener('touchend', this.send, false);
+        disconnectButton.addEventListener('touchend', this.send, false);
     },
     // deviceready Event Handler
     //
@@ -39,10 +40,16 @@ var app = {
         app.receivedEvent('deviceready');
     },
     connect: function() {
-        bluetoothSerial.registerOnConnectedCallback(function() {
+        bluetoothSerial.registerOnConnectCallback(function() {
             console.log("Connected");
             app.clear();
             app.display("Connected to device");
+        });
+
+        bluetoothSerial.registerOnCloseCallback(function() {
+            console.log("Disconnected");
+            app.clear();
+            app.display("Disconnected from device");
         });
         bluetoothSerial.connect(
             "18:21:95:5A:A3:80", // device to connect to
@@ -72,14 +79,27 @@ var app = {
         bluetoothSerial.send("moops",
             function() {
                 console.log("Success");
-                this.clear();
-                this.display("sent message");
+                app.clear();
+                app.display("sent message");
             }, // start listening if you succeed
             function() {
                 console.log("Not success");
             } // show the error if you fail
         );
     },
+
+        disconnect: function() {
+            bluetoothSerial.disconnect(
+                function() {
+                    console.log("disconnected");
+                    app.clear();
+                    app.display("disconnect sent");
+                }, // start listening if you succeed
+                function() {
+                    console.log("Not success");
+                } // show the error if you fail
+            );
+        },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
