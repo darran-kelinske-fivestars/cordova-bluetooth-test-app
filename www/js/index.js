@@ -30,7 +30,7 @@ var app = {
         connectButton.addEventListener('touchend', this.connect, false);
         listenButton.addEventListener('touchend', this.listen, false);
         sendButton.addEventListener('touchend', this.send, false);
-        disconnectButton.addEventListener('touchend', this.send, false);
+        disconnectButton.addEventListener('touchend', this.disconnect, false);
     },
     // deviceready Event Handler
     //
@@ -40,17 +40,7 @@ var app = {
         app.receivedEvent('deviceready');
     },
     connect: function() {
-        bluetoothSerial.registerOnConnectCallback(function() {
-            console.log("Connected");
-            app.clear();
-            app.display("Connected to device");
-        });
-
-        bluetoothSerial.registerOnCloseCallback(function() {
-            console.log("Disconnected");
-            app.clear();
-            app.display("Disconnected from device");
-        });
+    app.registerCallbacks();
         bluetoothSerial.connect(
             "18:21:95:5A:A3:80", // device to connect to
             function() {
@@ -64,6 +54,7 @@ var app = {
         );
     },
     listen: function() {
+        app.registerCallbacks();
         bluetoothSerial.listen(
             function() {
                 console.log("Success");
@@ -112,6 +103,24 @@ var app = {
 
         console.log('Received Event: ' + id);
     },
+
+    registerCallbacks: function() {
+                                    bluetoothSerial.registerOnDataCallback(function(data) {
+                                        app.display(data);
+                                    });
+
+                                            bluetoothSerial.registerOnConnectCallback(function() {
+                                                console.log("Connected");
+                                                app.clear();
+                                                app.display("Connected to device");
+                                            });
+
+                                            bluetoothSerial.registerOnCloseCallback(function() {
+                                                console.log("Disconnected");
+                                                app.clear();
+                                                app.display("Disconnected from device");
+                                            });
+                                    },
 
     display: function(message) {
         var display = document.getElementById("message"), // the message div
